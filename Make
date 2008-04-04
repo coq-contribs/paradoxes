@@ -1,0 +1,11 @@
+-R . Paradoxes
+BuraliForti.v
+     Logics.v
+Reynolds1.v
+     Log_Rel1.v
+     Log_Rel.v
+diaconescu.v
+Hurkens_Set.v
+-custom "$(COQC) $(COQDEBUG) $(COQLIBS) $(COQFLAGS) -impredicative-set $*" Hurkens_Set.v Hurkens_Set.vo
+-custom "$(COQC) $(COQDEBUG) $(COQLIBS) $(COQFLAGS) -impredicative-set $*" Russell.v Russell.vo
+BuraliForti_ex.v
