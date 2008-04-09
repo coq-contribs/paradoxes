@@ -111,10 +111,10 @@ all-gal.ps: $(VFILES)
 ###################
 
 Hurkens_Set.vo: Hurkens_Set.v
-	$(COQC) $(COQDEBUG) $(COQLIBS) $(COQFLAGS) -impredicative-set $*
+	$(COQC) $(COQDEBUG) $(COQLIBS) $(COQFLAGS) -impredicative-set $<
 
 Russell.vo: Russell.v
-	$(COQC) $(COQDEBUG) $(COQLIBS) $(COQFLAGS) -impredicative-set $*
+	$(COQC) $(COQDEBUG) $(COQLIBS) $(COQFLAGS) -impredicative-set $<
 
 ####################
 #                  #
