@@ -115,7 +115,7 @@ Definition gemb (A B R : Graph) :=
   A a' a -> R a b -> (forall b' : U, R a' b' -> B b' b -> False) -> False.
 
 Notation "A <= B [ R ]" := (gemb A B R)
-  (at level 70, B at level 8, no associativity).
+  (at level 70, B at next level, no associativity).
 
 (** [EMB A a B b] means there a simulation between (A,a) and (B,b) as
     pointed graphs; [NOTEMB] is its contrary *)
