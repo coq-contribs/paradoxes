@@ -33,15 +33,15 @@
 
 (* We derive the proof-irrelevance principle from the excluded middle *)
 
-Variable Bool : Prop.
+Parameter Bool : Prop.
 
-Variable T : Bool -> Prop.
+Parameter T : Bool -> Prop.
 
-Variable I : Prop -> Bool.
+Parameter I : Prop -> Bool.
 
-Variable E1 : forall x : Prop, x -> T (I x).
+Parameter E1 : forall x : Prop, x -> T (I x).
 
-Variable E2 : forall x : Prop, T (I x) -> x.
+Parameter E2 : forall x : Prop, T (I x) -> x.
 
 (* First, some general definition about relations *)
 
