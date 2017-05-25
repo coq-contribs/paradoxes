@@ -25,7 +25,7 @@
    Reference:
 
    - [Miquel] A. Miquel, "Le Calcul des Constructions Implicites",
-     thèse de doctorat de l'université Paris7, 2001.
+     thÃ¨se de doctorat de l'universitÃ© Paris7, 2001.
 *)
 
 (** The basic idea is to encode sets by pointed graphs over a given
