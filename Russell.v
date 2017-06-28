@@ -70,6 +70,8 @@ set and hence denotes the same set {{empty},empty}.
    - Replacement of elt in FOLD by just a link in some set B.
 *)
 
+Require Extraction.
+
 Inductive False : Set :=.
 Inductive True : Set :=
     I : True.
