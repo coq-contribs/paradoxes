@@ -1,2 +1,9 @@
 russell.ml
 russell.mli
+*.aux
+*.vo
+*.vok
+*.vos
+*.glob
+Makefile.coq*
+.Makefile.coq.d
