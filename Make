@@ -2,8 +2,8 @@
 
 BuraliForti.v
 Logics.v
+Reynolds.v
 Reynolds1.v
-Log_Rel1.v
 Log_Rel.v
 diaconescu.v
 BuraliForti_ex.v

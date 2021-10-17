@@ -54,12 +54,18 @@ Definition inclus (A : Type) (R S : Rel A) := forall x y : A, R x y -> S x y.
 
 End relation.
 
-Inductive per (A : Type) (R : Rel A) : Prop :=
-    per_intro : sym A R -> trans A R -> per A R.
+(** A setoid is a type A equipped with an equivalence relation R, which is interpreted
+    as equality on A. In other words, it is the quotient of a type A by an equivalence
+    relation R. Here we consider a slight generalization of equivalence relations,
+    called partial equivalence relations, where reflexivity is omitted. A quotient
+    by an equivalence merges related elements, in addition a quotient by a per erases
+    irreflexive elements. *) 
+Inductive per {A : Type} (R : Rel A) : Prop :=
+    per_intro : sym A R -> trans A R -> per R.
 
 (* equiv is a partial equivalence relation over Prop *)
 
-Lemma per_equiv : per Prop equiv.
+Lemma per_equiv : per equiv.
 apply per_intro.
 (*    subgoal   (sym Prop equiv) *)
 unfold sym in |- *; intros x y h.
@@ -104,11 +110,39 @@ Qed.
 
 Section logical_relation.
 
-Definition exp (A : Type) (R : Rel A) (B : Type) (S : Rel B) :
-  Rel (A -> B) := fun f g : A -> B => forall x y : A, R x y -> S (f x) (g y).
+(** exp R S is mostly used on setoids (A,R),(B,S) where R and S are partial
+    equivalence relations. Then, exp R S is the extensional equality for functions
+    in A -> B: for all equal inputs, the functions produce equal outputs.
+    The erasure of irreflexive elements for exp R S is very elegant:
+    it means we only consider functions f : A -> B that respect relations R,S,
+    as expected for the quotients (A,R) and (B,S). *)
+Definition exp {A B : Type} (R : Rel A) (S : Rel B) (f g : A -> B) : Prop :=
+  forall x y : A, R x y -> S (f x) (g y).
 
 Definition power (A : Type) (R : Rel A) : Rel (A -> Prop) :=
-  exp A R Prop equiv.
+  exp R equiv.
+
+Lemma exp_per : forall (A B : Prop) (R : Rel A) (S : Rel B),
+    per R
+    -> per S
+    -> per (exp R S).
+Proof.
+  unfold exp.
+  intros A B R S [symR transR] [symS transS].
+  apply per_intro.
+  - (* symmetry *)
+    intros x y H0 s t H1.
+    apply symS, H0, symR, H1.
+  - (* transitivity *)
+    intros x y z H H0 s t H1.
+    apply (transS _ (y t)).
+    apply H, H1.
+    apply H0.
+    apply (transR _ s).
+    apply symR, H1.
+    exact H1.
+Qed.
+
 
 End logical_relation.
 
