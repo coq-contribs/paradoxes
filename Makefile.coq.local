@@ -1,0 +1,13 @@
+post-all:: Hurkens_Set.vo Russell.vo
+
+Hurkens_Set.vo: Hurkens_Set.v
+	$(COQC) $(COQDEBUG) $(COQLIBS) $(COQFLAGS) -impredicative-set $<
+
+Russell.vo: Russell.v
+	$(COQC) $(COQDEBUG) $(COQLIBS) $(COQFLAGS) -impredicative-set $<
+
+clean::
+	$(HIDE)rm -f .Russell.aux Russell.glob Russell.vo \
+         Russell.vos Russell.vok .Hurkens_Set.aux Hurkens_Set.glob \
+         Hurkens_Set.vo Hurkens_Set.vos Hurkens_Set.vok Hurkens_Set.vo \
+         russell.ml russell.mli

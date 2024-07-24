@@ -1,0 +1,8 @@
+-R . Paradoxes
+
+BuraliForti.v
+Logics.v
+Reynolds.v
+Log_Rel.v
+diaconescu.v
+BuraliForti_ex.v

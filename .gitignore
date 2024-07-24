@@ -5,5 +5,5 @@ russell.mli
 *.vok
 *.vos
 *.glob
-Makefile.coq*
+Makefile.coq
 .Makefile.coq.d
